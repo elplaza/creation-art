@@ -4,7 +4,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$('input#submit').addClass('disabled');
 		$('#responseMessage').remove();
-		console.log($(this).serialize());
+//		console.log($(this).serialize());
 		$.post("contattami", $(this).serialize(), function(response){
 			if(response.status === 1){
 				$('#contactForm').prepend("<div id='responseMessage' class='success'><h4>Messaggio inviato correttamente!</h4><p>Ti contatter&ograve; appena possibile.</p></div>");
@@ -13,7 +13,7 @@ $(document).ready(function() {
 					$('input#submit').removeClass('disabled');
 				}, 5000);
 			}else if(response.status === 0){
-				console.log(response);
+//				console.log(response);
 				$('#contactForm').prepend("<div id='responseMessage' class='error'><h4>Qualcosa &egrave; andato storto!</h4></div>");
 				if(response.name !== false){
 					$('#responseMessage').append('<p>'+response.name+'</p><br>');

@@ -19,7 +19,7 @@
 		<p>Mi chiamo Lorenzo Fiorentino.
 			<br/>Decoratore professionale e Aerografista.
 			<br/>Eseguo lavori artigianali di ogni tipo per voi e per la vostra attivit&agrave;.
-			<br/><a href="{{ path('contacts') }}">Contattami</a> per avere informazioni o per un preventivo.
+			<br/>{% if route == 'contacts' %}Contattami{% else %}<a href="{{ path('contacts') }}">Contattami</a>{% endif %} per avere informazioni o per un preventivo.
 		</p>
 		<div class="social">
 			<h2 style="width:110px;margin:15% 4% 0 10%;float:left;">Seguimi su: </h2>

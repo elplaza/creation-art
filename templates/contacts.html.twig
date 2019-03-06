@@ -45,11 +45,12 @@
 {% endblock %}
 
 {% block javascripts %}
-	<script src="https://www.google.com/recaptcha/api.js?render=6LcEpZUUAAAAAHPJtAiEfPmCV7WS3Vz3-gQVwZME"></script>
+	<script type="text/javascript" src="{{ asset('js/mail.js') }}"></script>
+	<script src={{ "https://www.google.com/recaptcha/api.js?render=" ~ recaptcha_key }}></script>
 	<script>
 		grecaptcha.ready(function() {
 			grecaptcha.execute(
-				'6LcEpZUUAAAAAHPJtAiEfPmCV7WS3Vz3-gQVwZME',
+				'{{ recaptcha_key|raw }}',
 				{action: 'homepage'}
 			).then(function(token) {
 				document.getElementById('g-recaptcha-response').value = token;

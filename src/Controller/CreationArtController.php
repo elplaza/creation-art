@@ -16,8 +16,7 @@ use Symfony\Component\Validator\Constraints\Email;
 class CreationArtController extends AbstractController
 {
 
-	const RECAPTCHA_URL    = "https://www.google.com/recaptcha/api/siteverify";
-	const RECAPTCHA_SERVER = "6LcEpZUUAAAAAOn66tA6Lzo14kf2tsyIlyTAsvYa";
+	const RECAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify";
 
 	const CATEGORIES = array(
 		"allestimenti-negozi" => "Allestimenti di Negozi",
@@ -101,8 +100,10 @@ class CreationArtController extends AbstractController
 	 */
 	public function contacts()
 	{
-//		die(var_dump($_ENV));
-		return $this->render("contacts.html.twig");
+		return $this->render(
+			"contacts.html.twig",
+			array("recaptcha_key" => getenv("RECAPTCHA_CLIENT_KEY"))
+		);
 	}
 
 	/**
@@ -197,8 +198,8 @@ class CreationArtController extends AbstractController
 
 				// send email
 				$message = (new \Swift_Message("Form CONTATTI di Creation Art"))
-					->setFrom("contattami@creationart.it")
-					->setTo("federico.piazzon@gmail.com")
+					->setFrom(getenv("MAIL_FROM"))
+					->setTo(getenv("MAIL_TO"))
 					->setBody(
 						$this->renderView(
 							"contactme.html.twig",
@@ -222,7 +223,7 @@ class CreationArtController extends AbstractController
 	private function getCaptcha($secretKey)
 	{
 		$query = http_build_query(
-			array("secret" => self::RECAPTCHA_SERVER, "response" => $secretKey)
+			array("secret" => getenv("RECAPTCHA_SERVER_KEY"), "response" => $secretKey)
 		);
 
 		$response = file_get_contents(self::RECAPTCHA_URL . "?" . $query);

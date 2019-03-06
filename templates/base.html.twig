@@ -19,18 +19,8 @@
         {% block commonjavascripts %}
 			<script type="text/javascript" src="{{ asset('js/jquery-2.0.3.js') }}"></script>
 			<script type="text/javascript" src="{{ asset('js/jquery.slickforms.js') }}"></script>
-			<script type="text/javascript" src="{{ asset('js/zeta-slider.min.js') }}"></script>
-			<script type="text/javascript" src="{{ asset('js/mail.js') }}"></script>
-			<script type="text/javascript">
-				$(document).ready(function() {
-					$('#zetaSlider').zetaSlider({
-						warningMessage:true,
-						warningMessageTimeout:4000
-					});
-				});
-			</script>
 			<script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
-			<script type="text/javascript" src="{{ asset('js/creationart.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('js/scroll-top.js') }}"></script>
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
