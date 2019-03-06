@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="zetaSlider zetaTop" id="zetaSlider" style="display:inline-block;">
+	<div class="thumbnail-wrapper col4">
+		<ul class="zetaThumbs clearfix">
+			{% for key, text in categories %}
+			<li data-id="{{ key }}" class="item">
+				<a href="{{ path("category", {category: key}) }}">
+					<span class="roll" ></span>
+					<img src="{{ asset("images/categories/#{ key }/#{ key }.jpg") }}" alt="{{ "#{ text } di Lorenzo Fiorentino" }}" />
+			  		<div class="text"><h4>{{ text }}</h4></div>
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="zetaHolder" style="z-index:2">
+		<div class="zetaWrapper">
+			<div class="zetaEmpty isDraggingFalse">
+				<!-- populated by script -->
+			</div>
+		</div>
+		<div class="zetaControls">
+			<a class="zetaBtnClose" href="#">Chiudi</a>
+			<a class="zetaBtnPrev" href="#">Precedente</a>
+			<a class="zetaBtnNext" href="#">Successivo</a>
+		</div>
+		<div class="zetaWarning">
+			<div class="drag">Trascina</div>
+			<div class="arrow">Usa le frecce</div>
+			<div class="keys">Usa i tasti</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

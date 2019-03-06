@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="wrapper">
+		<div class="side-content">
+			<div class="form-container">
+				<div class="response"></div>
+				<h2>Contattami</h2>
+				<form id="contactForm" class="forms" action="" method="post">
+					<fieldset>
+						<ol>
+						<li class="form-row text-input-row">
+							<input type="text" id="name" name="name" class="text-input" pattern=".{3,50}" maxlength=50 required placeholder="Inserisci il tuo nome . . ." autocomplete="on" oninvalid="setCustomValidity('Il nome non &egrave; valido (almeno 3 caratteri).')" onchange="try{setCustomValidity('');}catch(e){}"/>
+						</li>
+						<li class="form-row text-input-row">
+							<input type="email" id="email" name="email" class="text-input" maxlength=50 required placeholder="Inserisci la tua email . . ." autocomplete="on" oninvalid="setCustomValidity('L&rsquo;email non &egrave; valida.')" onchange="try{setCustomValidity('');}catch(e){}"/>
+						</li>
+						<li class="form-row text-area-row">
+							<textarea id="message" name="message" class="text-area" rows=5 cols=50 maxlength=250 required placeholder="Inserisci un messaggio . . ." oninvalid="setCustomValidity('Il messaggio non &egrave; valido.')" onchange="try{setCustomValidity('');}catch(e){}"></textarea>
+						</li>
+						<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+						<li class="button-row">
+							<input type="submit" value="Invia" id="submit" name="submit" class="btn-submit" />
+						</li>
+						</ol>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="sidebar">
+			<div class="sidebox">
+				<h2>I miei recapiti</h2>
+				<p>
+					Lorenzo Fiorentino<br/>
+					Ciampino (Roma)<br />
+					cellulare: 3391158682
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<br />
+	<br />
+	<br />
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://www.google.com/recaptcha/api.js?render=6LcEpZUUAAAAAHPJtAiEfPmCV7WS3Vz3-gQVwZME"></script>
+	<script>
+		grecaptcha.ready(function() {
+			grecaptcha.execute(
+				'6LcEpZUUAAAAAHPJtAiEfPmCV7WS3Vz3-gQVwZME',
+				{action: 'homepage'}
+			).then(function(token) {
+				document.getElementById('g-recaptcha-response').value = token;
+			});
+		});
+	</script>
+{% endblock %}

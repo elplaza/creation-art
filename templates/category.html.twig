@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <div class="content single-portfolio-content">
+	{% for path in gallery %}
+		<div>
+			<img src="{{ asset(path) }}" alt="{{ "Creation Art | Lorenzo Fiorentino | Decoratore professionale | #{ category }" }}" />
+		</div>
+	{% endfor %}
+	</div>
+</div>

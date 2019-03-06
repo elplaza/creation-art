@@ -1,0 +1,31 @@
+<div class="wrapper">
+	<div class="header" style="z-index:1;position:fixed;height:130px;width:960px;background-color:white;margin-top:0;">
+		<div class="logo">
+			<a href="{{ path('home') }}">
+				<img src="{{ asset('images/logo.png') }}" alt="Creation Art di Lorenzo Fiorentino" />
+			</a>
+		</div>
+		<div id="menu" class="menu">
+			<ul id="tiny">
+				{% set route = app.request.get('_route') %}
+				<li {% if route == 'home' %}class="active"{% endif %}><a href="{{ path('home') }}">lavori</a></li>
+				<li {% if route == 'artist' %}class="active"{% endif %}><a href="{{ path('artist') }}">artista</a></li>
+				<li {% if route == 'contacts' %}class="active"{% endif %}><a href="{{ path('contacts') }}">contatti</a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="intro">
+		<p>Mi chiamo Lorenzo Fiorentino.
+			<br/>Decoratore professionale e Aerografista.
+			<br/>Eseguo lavori artigianali di ogni tipo per voi e per la vostra attivit&agrave;.
+			<br/><a href="{{ path('contacts') }}">Contattami</a> per avere informazioni o per un preventivo.
+		</p>
+		<div class="social">
+			<h2 style="width:110px;margin:15% 4% 0 10%;float:left;">Seguimi su: </h2>
+			<a style="margin-top:15%;float:left;" href="http://www.facebook.it" target="_blank">
+				<img src="{{ asset('images/icon-facebook.png') }}" alt="Creation art di Lorenzo Fiorentino su facebook"/>
+			</a>
+		</div>
+	</div>
+</div>

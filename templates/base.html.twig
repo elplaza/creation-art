@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="it-IT">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>{% block title %}Creation Art | Lorenzo Fiorentino | Decoratore professionale{% endblock %}</title>
+		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}
+			<link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet" media="all" />
+			<link type="text/css" href="{{ asset('css/media-queries.css') }}" rel="stylesheet" media="all" />
+        {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body id="top">
+    	<div class="body-wrapper">
+    		{{ include("header.html.twig") }}
+        	{% block body %}{% endblock %}
+        </div>
+        {{ include("footer.html.twig") }}
+        {% block commonjavascripts %}
+			<script type="text/javascript" src="{{ asset('js/jquery-2.0.3.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('js/jquery.slickforms.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('js/zeta-slider.min.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('js/mail.js') }}"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#zetaSlider').zetaSlider({
+						warningMessage:true,
+						warningMessageTimeout:4000
+					});
+				});
+			</script>
+			<script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('js/creationart.js') }}"></script>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
