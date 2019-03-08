@@ -218,6 +218,8 @@ class CreationArtController extends AbstractController
 				return new JsonResponse(array("status" => 1));
 			}
 		}
+
+		return new JsonResponse(array("status" => 0, "message" => "Oops... errore mio! Riprova per favore"));
 	}
 
 	private function getCaptcha($secretKey)
